@@ -3,11 +3,14 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     stylish = require('jshint-stylish'),
     clean = require('gulp-clean'),
-    karma = require('gulp-karma');
+    karma = require('gulp-karma'),
+    connect = require('gulp-connect');
 
 var paths = {
-  allJs: ['app/src/**/*.js'],
+  allJs: ['app/src/**/*.js', '!app/src/bower_components/**/*.js'],
+  allSrc: 'app/src/**',
   buildDir: 'app/build',
+  srcDir: 'app/src',
   buildFiles: ['app/src/**'],
   testFiles: ['app/src/**/*.js', '!app/src/**/*.spec.js']
 };
@@ -29,11 +32,15 @@ gulp.task('clean:build', function () {
 
 // Will wait until the clean is done first.
 gulp.task('copy:build', ['clean:build'], function () {
-  gulp.src(paths.buildFiles, { base: 'app/src' })
+  gulp.src(paths.buildFiles, { base: paths.srcDir })
   .pipe(gulp.dest(paths.buildDir));
 });
 
 gulp.task('build', ['lint', 'copy:build']);
+
+gulp.task('watch', function () {
+  gulp.watch(paths.allSrc, ['build']);
+});
 
 gulp.task('test', function () {
   // Be sure to return the stream
@@ -44,3 +51,12 @@ gulp.task('test', function () {
       browsers: ['PhantomJS']
     }));
 });
+
+gulp.task('connect', function () {
+  connect.server({
+    port: '9000',
+    root: paths.buildDir
+  });
+});
+
+gulp.task('default', ['build', 'watch', 'connect']);

@@ -1,0 +1,26 @@
+# ???
+*~
+
+# Vim swapfiles
+*.sw[nop]
+
+# OS X
+.DS_Store
+
+# IDE project files
+.idea
+nbproject
+
+# SASS
+.sass-cache
+
+# Built app files
+/app/build
+/app/coverage
+/app/development
+/app/package
+/app/releases
+
+# npm
+/node_modules
+/npm-debug.log
