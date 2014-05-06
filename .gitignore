@@ -20,6 +20,7 @@ nbproject
 /app/development
 /app/package
 /app/releases
+/app/src/bower_components
 
 # npm
 /node_modules
