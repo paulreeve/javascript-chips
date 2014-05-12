@@ -19,8 +19,9 @@
       h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
         font-weight: 300;
       }
-      .console {font-family: Menlo,Monaco,Consolas,"Courier New",monospace;}
+      .console {font-family: Menlo,Monaco,Consolas,"Courier New",monospace;font-size:12px;}
       .panel-title {font-weight:400;}
+      .footer {text-align:center;}
     </style>
   </head>
   <body ng-app="jsChips" ng-controller="jsChipsCtrl">
@@ -49,6 +50,7 @@
 
       <div ui-view="sidebar" class="sidebar hidden-xs col-sm-3 col-md-3"></div>
       <div ui-view="content" class="content col-xs-12 col-sm-9 col-md-9"></div>
+      <div ui-view="footer"></div>
       <!-- END: BODY -->
     </div>
     <script src="https://code.angularjs.org/1.2.16/angular.min.js"></script>
