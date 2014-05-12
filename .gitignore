@@ -18,8 +18,6 @@ nbproject
 /app/build
 /app/coverage
 /app/development
-/app/package
-/app/releases
 /app/src/bower_components
 
 # npm

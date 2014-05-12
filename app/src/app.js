@@ -1,6 +1,7 @@
 angular.module('jsChips', [
 	'ui.router',
-  'hljs'
+  'hljs',
+  'javascript-chips-tpl'
 ])
 
 .controller('jsChipsCtrl', ['$scope', function ($scope) {

@@ -23,6 +23,9 @@
     "gulp-karma": "0.0.4",
     "gulp-usemin": "^0.3.3",
     "gulp-connect": "^2.0.5",
-    "gulp-watch": "^0.6.4"
+    "gulp-watch": "^0.6.4",
+    "gulp-html2js": "^0.1.0",
+    "gulp-concat": "^2.2.0",
+    "gulp-uglify": "^0.3.0"
   }
 }

@@ -4,19 +4,25 @@ var gulp = require('gulp'),
     stylish = require('jshint-stylish'),
     clean = require('gulp-clean'),
     karma = require('gulp-karma'),
-    connect = require('gulp-connect');
+    connect = require('gulp-connect'),
+    concat = require('gulp-concat'),
+    html2js = require('gulp-html2js'),
+    uglify = require('gulp-uglify');
 
 var paths = {
-  allJs: ['app/src/**/*.js', '!app/src/bower_components/**/*.js'],
-  allLintJs: [
-    'app/src/**/*.js',
-    '!app/src/bower_components/**/*.js',
-    '!app/src/vendor/**/*.js'
+  allPkgJs: [
+    'app/build/*.js'
   ],
-  allSrc: ['app/src/**', '!app/src/vendor/**'],
+  allJs: ['app/src/**/*.js'],
+  allLintJs: [
+    'app/src/**/*.js'
+  ],
+  allSrc: ['app/src/**'],
   buildDir: 'app/build',
+  packageDir: 'app/package',
   srcDir: 'app/src',
-  buildFiles: ['app/src/**'],
+  allTemplates: ['app/src/templates/**/*.html', 'app/src/templates/**/*.tpl'],
+  buildFiles: ['app/src/**', '!app/src/templates', '!app/src/templates/**'],
   testFiles: ['app/src/**/*.js', '!app/src/**/*.spec.js']
 };
 
@@ -35,8 +41,12 @@ gulp.task('clean:build', function () {
   return cleanDir(paths.buildDir);
 });
 
+gulp.task('clean:package', function () {
+  return cleanDir(paths.packageDir);
+});
+
 // Will wait until the clean is done first.
-gulp.task('copy:build', ['clean:build'], function () {
+gulp.task('copy:build', ['clean:build', 'html2js'], function () {
   gulp.src(paths.buildFiles, { base: paths.srcDir })
   .pipe(gulp.dest(paths.buildDir));
 });
@@ -64,4 +74,33 @@ gulp.task('connect', function () {
   });
 });
 
+gulp.task('connect:package', function () {
+  connect.server({
+    port: '9001',
+    root: './'
+  });
+});
+
+gulp.task('html2js', function() {
+  gulp.src(paths.allTemplates)
+    .pipe(html2js({
+      outputModuleName: 'javascript-chips-tpl',
+      useStrict: true,
+      base: 'app/src'
+    }))
+    .pipe(concat('template.js'))
+    .pipe(gulp.dest(paths.buildDir))
+});
+
+gulp.task('min', function() {
+  return gulp.src(paths.allPkgJs)
+    .pipe(uglify({
+      mangle: false
+    }))
+    .pipe(concat('javascript-chips.min.js'))
+    .pipe(gulp.dest(paths.packageDir));
+});
+
+gulp.task('package', ['clean:package', 'min']);
 gulp.task('default', ['build', 'watch', 'connect']);
+gulp.task('package:view', ['package', 'connect:package']);
