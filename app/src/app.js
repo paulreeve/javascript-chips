@@ -11,10 +11,10 @@ angular.module('jsChips', [
 .config(function($stateProvider) {
   $stateProvider
     .state('index', {
-      url: "/",
+      url: "",
       views: {
         "sidebar": { templateUrl: "templates/sidebar.html" },
-        "content": { templateUrl: "templates/content.html" }
+        "content": { templateUrl: "templates/home.html" }
       }
     })
     .state('this', {

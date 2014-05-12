@@ -2,7 +2,7 @@
 <p class="lead">The special variable <code>this</code> is available everywhere and its value in most cases is determined by how a function is called.</p>
 <p>This page explores the complexity that comes with <code>this</code> and how <code>"use strict";</code> effects it.</p>
 
-<div class="panel panel-default">
+<div class="panel panel-info">
   <div class="panel-heading">
     <h3 class="panel-title">Simple use in "sloppy" mode.</h3>
   </div>
@@ -18,5 +18,40 @@
 	    </tr>
 	  </table>	  	
 	  <p>Notice <code>this</code> refers to the global object (<code>window</code>).</p>
+  </div>
+</div>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Simple use in "strict" mode.</h3>
+  </div>
+  <div class="panel-body">
+	  <table class="table">
+	    <tr>
+	    	<th width="50%">code</th>
+	    	<th width="50%">result</th>
+	    </tr>
+	    <tr>
+	    	<td><div hljs include="'templates/this/code/this2.tpl'"></div></td>
+	    	<td><p class="well console">undefined</p></td>
+	    </tr>
+	  </table>	  	
+	  <p>In <code>strict</code> mode, <code>this</code> is undefined.</p>
+  </div>
+</div>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Specify the value of <code>this</code> with <code>call()</code></h3>
+  </div>
+  <div class="panel-body">
+	  <table class="table">
+	    <tr>
+	    	<th width="50%">code</th>
+	    	<th width="50%">result</th>
+	    </tr>
+	    <tr>
+	    	<td><div hljs include="'templates/this/code/this3.tpl'"></div></td>
+	    	<td><p class="well console">26</p></td>
+	    </tr>
+	  </table>	  	
   </div>
 </div>
