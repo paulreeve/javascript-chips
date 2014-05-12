@@ -8,7 +8,12 @@ var gulp = require('gulp'),
 
 var paths = {
   allJs: ['app/src/**/*.js', '!app/src/bower_components/**/*.js'],
-  allSrc: 'app/src/**',
+  allLintJs: [
+    'app/src/**/*.js',
+    '!app/src/bower_components/**/*.js',
+    '!app/src/vendor/**/*.js'
+  ],
+  allSrc: ['app/src/**', '!app/src/vendor/**'],
   buildDir: 'app/build',
   srcDir: 'app/src',
   buildFiles: ['app/src/**'],
@@ -16,7 +21,7 @@ var paths = {
 };
 
 gulp.task('lint', function () {
-  gulp.src(paths.allJs)
+  gulp.src(paths.allLintJs)
     .pipe(jshint())
     .pipe(jshint.reporter(stylish));
 });
