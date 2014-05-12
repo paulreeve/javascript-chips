@@ -4,7 +4,7 @@ var makeChips = function (size, salt) {
 
 var chipper = {
   getChipCount: function () {
-  	return 26;
+    return 26;
   }
 };
 

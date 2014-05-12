@@ -7,17 +7,20 @@
     <h3 class="panel-title">Simple use in "sloppy" mode.</h3>
   </div>
   <div class="panel-body">
-	  <table class="table">
-	    <tr>
-	    	<th width="50%">code</th>
-	    	<th width="50%">result</th>
-	    </tr>
-	    <tr>
-	    	<td><div hljs include="'templates/this/code/this1.tpl'"></div></td>
-	    	<td><p class="well console">Window {top: Window, window: Window, location: Location, external: Object, chrome: Object…}</p></td>
-	    </tr>
-	  </table>	  	
-	  <p>Notice <code>this</code> refers to the global object (<code>window</code>).</p>
+  	<div class="container-fluid">  		
+  		<div class="row">
+	  		<div class="col-xs-12 col-sm-6">
+	  			<small>code</small>
+				<div hljs include="'templates/this/code/this1.tpl'"></div>
+	  		</div>
+	  		<div class="col-xs-12 col-sm-6">
+	  			<small>console</small>
+				<p class="well console"><span class="text-info">></span> Window {top: Window, window: Window, location: Location, external: Object, chrome: Object…}</p>
+	  		</div>
+  		</div>
+  		<p>Notice <code>this</code> refers to the global object (<code>window</code>).</p>
+  	</div>  	
+	
   </div>
 </div>
 <div class="panel panel-info">
@@ -25,17 +28,19 @@
     <h3 class="panel-title">Simple use in "strict" mode.</h3>
   </div>
   <div class="panel-body">
-	  <table class="table">
-	    <tr>
-	    	<th width="50%">code</th>
-	    	<th width="50%">result</th>
-	    </tr>
-	    <tr>
-	    	<td><div hljs include="'templates/this/code/this2.tpl'"></div></td>
-	    	<td><p class="well console">undefined</p></td>
-	    </tr>
-	  </table>	  	
-	  <p>In <code>strict</code> mode, <code>this</code> is undefined.</p>
+  	<div class="container-fluid">  		
+  		<div class="row">
+	  		<div class="col-xs-12 col-sm-6">
+	  			<small>code</small>
+				<div hljs include="'templates/this/code/this2.tpl'"></div>
+	  		</div>
+	  		<div class="col-xs-12 col-sm-6">
+	  			<small>console</small>
+				<p class="well console"><span class="text-info">></span> undefined</p>
+	  		</div>
+  		</div>
+  		<p>In <code>strict</code> mode, <code>this</code> is undefined.</p>
+  	</div> 
   </div>
 </div>
 <div class="panel panel-info">
@@ -43,15 +48,61 @@
     <h3 class="panel-title">Specify the value of <code>this</code> with <code>call()</code></h3>
   </div>
   <div class="panel-body">
-	  <table class="table">
-	    <tr>
-	    	<th width="50%">code</th>
-	    	<th width="50%">result</th>
-	    </tr>
-	    <tr>
-	    	<td><div hljs include="'templates/this/code/this3.tpl'"></div></td>
-	    	<td><p class="well console">26</p></td>
-	    </tr>
-	  </table>	  	
+  	<div class="container-fluid">  		
+  		<div class="row">
+	  		<div class="col-xs-12 col-sm-6">
+	  			<small>code</small>
+				<div hljs include="'templates/this/code/this3.tpl'"></div>
+	  		</div>
+	  		<div class="col-xs-12 col-sm-6">
+	  			<small>console</small>
+				<p class="well console"><span class="text-info">></span> 26</p>
+	  		</div>
+  		</div>
+  	</div>   	
+  </div>
+</div>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Specify the value of <code>this</code> with <code>apply()</code></h3>
+  </div>
+  <div class="panel-body">
+  	<div class="container-fluid">  		
+  		<div class="row">
+	  		<div class="col-xs-12 col-sm-6">
+	  			<small>code</small>
+				<div hljs include="'templates/this/code/this4.tpl'"></div>
+	  		</div>
+	  		<div class="col-xs-12 col-sm-6">
+	  			<small>console</small>
+				<p class="well console">
+					<span class="text-info">></span> 26<br />
+					<span class="text-info">></span> 'large'<br />
+					<span class="text-info">></span> true
+				</p>
+	  		</div>
+  		</div>
+  		<p><code>apply()</code> accepts an array of arguments.</p>
+  	</div>   	
+  </div>
+</div>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Constructor functions</h3>
+  </div>
+  <div class="panel-body">
+  	<p>Calling functions with the <code>new</code> operator makes them constructors. An object is created and passed in as <code>this</code>.</p>
+  	<div class="container-fluid">  		
+  		<div class="row">
+	  		<div class="col-xs-12 col-sm-6">
+	  			<small>code</small>
+				<div hljs include="'templates/this/code/this5.tpl'"></div>
+	  		</div>
+	  		<div class="col-xs-12 col-sm-6">
+	  			<small>console</small>
+				<p class="well console"><span class="text-info">></span> true</p>
+	  		</div>
+  		</div>
+  	</div>
   </div>
 </div>
